@@ -1,0 +1,133 @@
+class MainActivity : AppCompatActivity() {
+    lateinit var btn1: Button
+    lateinit var btn2:Button
+    lateinit var btn3:Button
+    lateinit var btn4:Button
+    lateinit var btn5:Button
+    lateinit var btn6:Button
+    lateinit var btn7:Button
+    lateinit var btn8:Button
+    lateinit var btn9:Button
+    lateinit var btnPlus:Button
+    lateinit var btnSub:Button
+    lateinit var btnMul: Button
+    lateinit var btnDiv:Button
+    lateinit var btnClr: Button
+    lateinit var btnEq: Button
+
+    lateinit var TView: EditText
+    lateinit var Display: TextView
+    var firstValue: Double=0.0
+    var result : Double=0.0
+    var secondValue: Double=0.0
+    var op:String="null"
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_main)
+
+        btn1=findViewById<Button>(R.id.btn1)
+        btn2=findViewById<Button>(R.id.btn2)
+        btn3=findViewById<Button>(R.id.btn3)
+        btn4=findViewById<Button>(R.id.btn4)
+        btn5=findViewById<Button>(R.id.btn5)
+        btn6=findViewById<Button>(R.id.btn6)
+        btn7=findViewById<Button>(R.id.btn7)
+        btn8=findViewById<Button>(R.id.btn8)
+        btn9=findViewById<Button>(R.id.btn9)
+        btnPlus=findViewById<Button>(R.id.btnPlus)
+        btnSub=findViewById<Button>(R.id.btnSub)
+        btnMul=findViewById<Button>(R.id.btnMul)
+        btnDiv=findViewById<Button>(R.id.btnDiv)
+        btnClr=findViewById<Button>(R.id.btnCLR)
+        btnEq=findViewById<Button>(R.id.btnEq)
+        TView=findViewById<EditText>(R.id.Edt1)
+        Display=findViewById<TextView>(R.id.Display)
+         btn1.setOnClickListener {
+
+            TView.append(btn1.text)
+
+        }
+        btn2.setOnClickListener {
+
+            TView.append(btn2.text)
+        }
+        btn3.setOnClickListener {
+
+            TView.append(btn3.text)
+        }
+        btn4.setOnClickListener {
+
+            TView.append(btn4.text)
+        }
+        btn5.setOnClickListener {
+
+            TView.append(btn5.text)
+        }
+        btn6.setOnClickListener {
+
+            TView.append(btn6.text)
+        }
+        btn7.setOnClickListener {
+
+            TView.append(btn7.text)
+        }
+        btn8.setOnClickListener {
+
+            TView.append(btn8.text)
+        }
+        btn9.setOnClickListener {
+
+            TView.append(btn9.text)
+        }
+        btnPlus.setOnClickListener {
+           firstValue = TView.text.toString().toDouble()
+            op="+"
+            TView.text.clear()
+
+
+        }
+        btnSub.setOnClickListener {
+            firstValue=TView.text.toString().toDouble()
+            op="-"
+            TView.text.clear()
+
+
+        }
+        btnDiv.setOnClickListener {
+            firstValue=TView.text.toString().toDouble()
+            op="/"
+            TView.text.clear()
+
+        }
+        btnMul.setOnClickListener {
+            firstValue=TView.text.toString().toDouble()
+            op="*"
+             TView.text.clear()
+        }
+        btnClr.setOnClickListener {
+            TView.text.clear()
+            Display.text=""
+            firstValue=0.0
+            secondValue=0.0
+            op=""
+
+        }
+        btnEq.setOnClickListener {
+            secondValue = TView.text.toString().toDouble()
+               result = when(op){
+                   "+"->firstValue+secondValue
+                   "-"->firstValue-secondValue
+                   "*"->firstValue*secondValue
+                   "/"->firstValue/secondValue
+                     else -> 0.0
+               }
+           Display.text=result.toString()
+        }
+
+        }
+
+
+    }
